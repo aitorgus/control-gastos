@@ -1,8 +1,8 @@
 import React from 'react'
 
 
-
-const NuevoPresupuesto = (presupuesto, SetPresupuesto) => {
+//OJO ERRORES -> Debo de hacer Destructuring para utilizar props
+const NuevoPresupuesto = ({ presupuesto, setPresupuesto }) => {
     return (
         <div className="contenedor-presupuesto contenedor sombra">
 
@@ -15,8 +15,9 @@ const NuevoPresupuesto = (presupuesto, SetPresupuesto) => {
                         className="nuevo-presupuesto"
                         placeholder='Añade tu Presupuesto'
                         value={presupuesto}
-                        onChange={evento => SetPresupuesto(evento.target.value)}
-                    />{/*Va a imprimir el valor por defecto del presupuesto, el cual es 0
+                        onChange={evento => setPresupuesto(evento.target.value)}
+                    />
+                    {/*Va a imprimir el valor por defecto del presupuesto, el cual es 0
                          1º Con onChange, detecto cambios del valor del mismo, lo recojo con evento.target.value y me lo llevo a SetPresupuesto, que cambiará el valor de presupuesto
 
                          El formulario, sólo debe aceptar datos de tipo numérico, por lo que tenemos que validar el contenido que entra.

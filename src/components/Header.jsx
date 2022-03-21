@@ -1,8 +1,8 @@
 import React from 'react'
 import NuevoPresupuesto from './NuevoPresupuesto'
 
-
-const Header = (presupuesto, SetPresupuesto) => {
+//OJO ERRORES -> Debo de hacer Destructuring para utilizar props
+const Header = ({ presupuesto, setPresupuesto }) => {
     return (
         <header>
             <h1>Planificador de Gastos</h1>
@@ -10,7 +10,7 @@ const Header = (presupuesto, SetPresupuesto) => {
             <NuevoPresupuesto
 
                 presupuesto={presupuesto}
-                SetPresupuesto={SetPresupuesto}
+                setPresupuesto={setPresupuesto}
 
             />
         </header>
