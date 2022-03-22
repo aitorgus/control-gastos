@@ -4,6 +4,7 @@ import Header from './components/Header'
 function App() {
   {/*El presupuesto por defecto es 0, hasta que el usuario indique un valor. */ }
   const [presupuesto, setPresupuesto] = useState(0);
+  const [isValidPresupuesto, setIsValidPresupuesto] = useState(false)
 
   return (
     <div>
@@ -11,6 +12,8 @@ function App() {
       <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
+        isValidPresupuesto={isValidPresupuesto}
+        setIsValidPresupuesto={setIsValidPresupuesto}
       />
     </div>
   )
