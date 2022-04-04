@@ -1,5 +1,6 @@
 import React from 'react'
 import NuevoPresupuesto from './NuevoPresupuesto'
+import ControlPresupuesto from './ControlPresupuesto'
 
 //OJO ERRORES -> Debo de hacer Destructuring para utilizar props
 const Header = ({ presupuesto
@@ -17,7 +18,11 @@ const Header = ({ presupuesto
             */}
             {isValidPresupuesto ? (
 
-                <p>Control Presupuesto</p>
+                <ControlPresupuesto
+                
+                presupuesto={presupuesto}
+                
+                />
 
             ) : (
                 <NuevoPresupuesto
@@ -26,8 +31,7 @@ const Header = ({ presupuesto
                     setPresupuesto={setPresupuesto}
                     setIsValidPresupuesto={setIsValidPresupuesto}
                 />
-            )
-            }
+            ) }
 
         </header>
     )

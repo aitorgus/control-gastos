@@ -25,6 +25,8 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto, setIsValidPresupuesto }
         } else {
             {/*Reseteo setMensaje, si corrijo el dato del presupuesto, me va a eliminar el error */ }
             setMensaje('')
+            setIsValidPresupuesto(true)
+            {/*Si es válido, usando un ternario en el header, mostramos el formulario o pasa a mostrar el presupuesto */ }
         }
     }
     return (
@@ -35,11 +37,13 @@ const NuevoPresupuesto = ({ presupuesto, setPresupuesto, setIsValidPresupuesto }
                 <div className="campo">
                     <label >Definir Presupuesto</label>
 
+                        {/*En el formulario, utilizo 2 formas para FORZAR que el input sea tipo number. 1º type="number" , 2º en el onChange, al recoger el dato lo convierto a tipo number, de esta forma
+                        luego podremos formatear el tipo dinero en "dinero" */}
                     <input type="number"
                         className="nuevo-presupuesto"
                         placeholder='Añade tu Presupuesto'
                         value={presupuesto}
-                        onChange={evento => setPresupuesto(evento.target.value)}
+                        onChange={evento => setPresupuesto(Number(evento.target.value))}
                     />
                     {/*Va a imprimir el valor por defecto del presupuesto, el cual es 0
                          1º Con onChange, detecto cambios del valor del mismo, lo recojo con evento.target.value y me lo llevo a SetPresupuesto, que cambiará el valor de presupuesto
