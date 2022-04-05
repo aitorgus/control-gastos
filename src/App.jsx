@@ -8,11 +8,17 @@ function App() {
   const [presupuesto, setPresupuesto] = useState(0);
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false)
   {/*El valor inicial del Modal será falso, pues no quiero que al inicio se muestre, sólo tras pulsar el Añadir nuevo gasto */}
-  const [modal,setModal] = useState(false)
+  const [modal, setModal] = useState(false)
+  const [animarModal,setAnimarModal] = useState(false)
 
   const handleNuevoGasto = () => {
     {/*Activamos el modal si detecta que pulsa el botón de añadir gasto */}
     setModal(true)
+  
+    {/*Tras abrir el modal, pasado 0.5 segundo, activamos el formulario  */}
+    setTimeout(() => {
+      setAnimarModal(true)
+    }, 500)
 
   }
 
@@ -40,6 +46,8 @@ function App() {
         
         <Modal
         setModal={setModal}
+        animarModal={animarModal}
+        setAnimarModal={setAnimarModal}
       />}
     </div>
   )
