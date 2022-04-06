@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './components/Header'
+import ListadoGasto from './components/ListadoGasto';
 import Modal from './components/Modal';
 import { generarId } from './helpers';
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
@@ -26,7 +27,8 @@ function App() {
   }
 
   const guardarGasto = (gasto) => {
-     gasto.id = generarId()
+    gasto.id = generarId()
+    gasto.fecha=Date.now()
     SetGastos([...gastos, gasto])
     {/*Al añadir el gasto, cierro el MODAL */}
     setAnimarModal(false)
@@ -47,12 +49,20 @@ function App() {
 
         {/*El botón de añadir presupuesto, sólo debe demostrarse si el valor añadido es correcto, si isValidPresupuesto es true, se ejecuta el resto. */}
       {isValidPresupuesto && (
-      
+        <>
+          <main>
+            <ListadoGasto 
+              gastos={gastos}
+            />
+
+            
+          </main>
         <div className='nuevo-gasto'>
           
           <img src={IconoNuevoGasto} alt="icono nuevo gasto" onClick={handleNuevoGasto} />
           
-        </div>
+          </div>
+          </>
       ) }
       
       {modal &&
