@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import IconoNuevoGasto from './img/nuevo-gasto.svg'
 import Modal from './components/Modal';
+import { generarId } from './helpers';
+import IconoNuevoGasto from './img/nuevo-gasto.svg'
+
 
 function App() {
   {/*El presupuesto por defecto es 0, hasta que el usuario indique un valor. */ }
@@ -9,7 +11,8 @@ function App() {
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false)
   {/*El valor inicial del Modal será falso, pues no quiero que al inicio se muestre, sólo tras pulsar el Añadir nuevo gasto */}
   const [modal, setModal] = useState(false)
-  const [animarModal,setAnimarModal] = useState(false)
+  const [animarModal, setAnimarModal] = useState(false)
+  const [gastos,SetGastos] = useState([])
 
   const handleNuevoGasto = () => {
     {/*Activamos el modal si detecta que pulsa el botón de añadir gasto */}
@@ -20,6 +23,16 @@ function App() {
       setAnimarModal(true)
     }, 500)
 
+  }
+
+  const guardarGasto = (gasto) => {
+     gasto.id = generarId()
+    SetGastos([...gastos, gasto])
+    {/*Al añadir el gasto, cierro el MODAL */}
+    setAnimarModal(false)
+    setTimeout(() => {
+      setModal(false)
+    },500)
   }
 
   return (
@@ -48,6 +61,7 @@ function App() {
         setModal={setModal}
         animarModal={animarModal}
         setAnimarModal={setAnimarModal}
+        guardarGasto={guardarGasto}
       />}
     </div>
   )

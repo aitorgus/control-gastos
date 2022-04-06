@@ -1,8 +1,16 @@
+import { useState } from 'react'
+import Mensaje from './Mensaje'
 import CerrarBtn from '../img/cerrar.svg'
 
 
 
-const Modal = ({setModal,animarModal,setAnimarModal}) => {
+const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto }) => {
+  
+  const [mensaje,SetMensaje]=useState('')
+  const [nombre, SetNombre] = useState('')
+  const [cantidad, SetCantidad] = useState('')
+  const [categoria, SetCategoria] = useState('')
+    
     {/*Desactivamos el modal asignandole false */}
     const ocultarModal = () => {
       setModal(false)
@@ -10,8 +18,22 @@ const Modal = ({setModal,animarModal,setAnimarModal}) => {
 
       setTimeout(() => {
           setModal(false)
-      },500)
-}
+      }, 500)}
+  
+   const handleSubmit = evento => {
+    {/*Previene la acción por defecto, que es enviar el formulario */}
+        evento.preventDefault() 
+        {/*Si alguno de los componentes del array está vacío debe de devolver algún error */ }
+        if ([nombre,cantidad,categoria].includes('')) {
+          SetMensaje('Todos los campos son obligatorios')
+          setTimeout(() => {
+            SetMensaje('')
+          },3000 )
+          return
+     }
+     guardarGasto({nombre,cantidad,categoria})
+  }
+  
   return (
       <div className="modal">
             {/*Al pulsar el botón 'X' de cerrar, activo el evento onClick, que a su vez llama a la función ocultarModal */}
@@ -23,29 +45,29 @@ const Modal = ({setModal,animarModal,setAnimarModal}) => {
       </div>
       {/*Usando el template String combino clases estáticas y dinámicas
       y lo condiciono. Si animarModal es true, le añado la clase estática "animar", en caso contrario, le añado la clase  "cerrar" */}
-      <form className={`formulario ${animarModal ? "animar " : 'cerrar'}`}>
+      <form  onSubmit={handleSubmit} className={`formulario ${animarModal ? "animar " : 'cerrar'}`}>
         <legend>Nuevo Gasto</legend>
-
+        {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
         <div className='campo'>
           <label htmlFor="nombre">Nombre Gasto</label>
-          <input type="text"  placeholder='Añadir descripción del gasto'/>
+          <input type="text"  placeholder='Añadir descripción del gasto' value={nombre} onChange={evento => SetNombre(evento.target.value)} />
         </div>
 
         <div className='campo'>
           <label htmlFor="cantidad">Cantidad</label>
-          <input type="number"  placeholder='Añade la cantidad del gasto: ejemplo 300'/>
+          <input type="number" placeholder='Añade la cantidad del gasto: ejemplo 300' value={cantidad} onChange={evento => SetCantidad(Number(evento.target.value))} />
         </div>
 
         <div className='campo'>
           <label htmlFor="categoria">Categoria</label>
-          <select id="categoria">
+          <select id="categoria" value={categoria} onChange={evento => SetCategoria(evento.target.value)}>
             <option value="">--Seleccione--</option>
             <option value="ahorro">Ahorro</option>
             <option value="comida">Comida</option>
             <option value="casa">Casa</option>
             <option value="gastos">Gastos Varios</option>
             <option value="ocio">Ocio</option>
-            <option value="salud">Ocio</option>
+            <option value="salud">Salud</option>
             <option value="Suscripciones">Suscripciones</option>
 
           </select>
