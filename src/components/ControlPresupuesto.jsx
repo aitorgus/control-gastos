@@ -1,6 +1,16 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 
-const ControlPresupuesto = ({ presupuesto }) => {
+const ControlPresupuesto = ({ gastos, presupuesto }) => {
+  
+  const [disponible, SetDisponible] = useState(0)
+  const [gastado, SetGastado]=useState(0)
+
+  useEffect(() => {
+    const totalGastado = gastos.reduce((total, gasto) => gasto.cantidad + total, 0)
+    const totalDisponible = presupuesto - totalGastado
+    SetDisponible(totalDisponible)
+    SetGastado(totalGastado)
+  }, [gastos])
     
   {/*Formateo Number en dinero, para mostrarlo de forma mas amigable, pero NO MODIFICO el valor real de "presupuesto", este permanece inmutable */}
   const formatearCantidad = (cantidad) => {
@@ -24,12 +34,12 @@ const ControlPresupuesto = ({ presupuesto }) => {
         
 
          <p>
-          <span>Disponible: </span> {formatearCantidad(0)} 
+          <span>Disponible: </span> {formatearCantidad(disponible)} 
           
         </p>
         
          <p>
-          <span>Gastado: </span> {formatearCantidad(0)} 
+          <span>Gastado: </span> {formatearCantidad(gastado)} 
           
         </p>
         
