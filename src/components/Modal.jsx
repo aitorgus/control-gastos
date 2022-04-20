@@ -1,21 +1,33 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Mensaje from './Mensaje'
 import CerrarBtn from '../img/cerrar.svg'
 
 
 
-const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto,gastoEditar }) => {
   
   const [mensaje,SetMensaje]=useState('')
   const [nombre, SetNombre] = useState('')
   const [cantidad, SetCantidad] = useState('')
   const [categoria, SetCategoria] = useState('')
+  const [fecha,setFecha]=useState('')
+  const [id, setId] = useState('')
     
+  useEffect(() => {
+      if (Object.keys(gastoEditar).length > 0)
+    {
+        SetNombre(gastoEditar.nombre)
+        SetCantidad(gastoEditar.cantidad)
+        SetCategoria(gastoEditar.categoria)
+        SetId(gastoEditar.id)
+        SetFecha(gastoEditar.fecha)
+    }
+  },[])
     {/*Desactivamos el modal asignandole false */}
     const ocultarModal = () => {
       setModal(false)
       setAnimarModal(false)
-
+      setGastoEditar({})
       setTimeout(() => {
           setModal(false)
       }, 500)}
@@ -31,7 +43,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto }) => {
           },3000 )
           return
      }
-     guardarGasto({nombre,cantidad,categoria})
+     guardarGasto({nombre,cantidad,categoria, id,fecha,setGastoEditar})
   }
   
   return (
@@ -45,8 +57,10 @@ const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto }) => {
       </div>
       {/*Usando el template String combino clases estáticas y dinámicas
       y lo condiciono. Si animarModal es true, le añado la clase estática "animar", en caso contrario, le añado la clase  "cerrar" */}
-      <form  onSubmit={handleSubmit} className={`formulario ${animarModal ? "animar " : 'cerrar'}`}>
-        <legend>Nuevo Gasto</legend>
+      <form onSubmit={handleSubmit} className={`formulario ${animarModal ? "animar " : 'cerrar'}`}>
+        
+        <legend>{gastoEditar.nombre ? "Editar Gasto" : "Nuevo Gasto"}</legend>
+
         {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
         <div className='campo'>
           <label htmlFor="nombre">Nombre Gasto</label>
@@ -72,7 +86,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto }) => {
           </select>
         </div>
 
-        <input type="submit" value="Añadir Gasto" />
+        <input type="submit" value={gastoEditar.nombre ? "Guardar cambios" : "Añadir Gasto"} />
         
 
     </form>

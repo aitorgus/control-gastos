@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import ListadoGasto from './components/ListadoGasto';
 import Modal from './components/Modal';
@@ -15,29 +15,55 @@ function App() {
   {/*El valor inicial del Modal será falso, pues no quiero que al inicio se muestre, sólo tras pulsar el Añadir nuevo gasto */}
   const [modal, setModal] = useState(false)
   const [animarModal, setAnimarModal] = useState(false)
+  const [gastoEditar, setGastoEditar] = useState({})
   
-
-  const handleNuevoGasto = () => {
-    {/*Activamos el modal si detecta que pulsa el botón de añadir gasto */}
+  useEffect(()=> {
+    if (Object.keys(gastoEditar).length > 0)
+    {
+         {/*Activamos el modal si detecta que pulsa el botón de añadir gasto */}
     setModal(true)
   
     {/*Tras abrir el modal, pasado 0.5 segundo, activamos el formulario  */}
     setTimeout(() => {
       setAnimarModal(true)
     }, 500)
+    }
+  }, [gastoEditar])
+  
+
+  const handleNuevoGasto = () => {
+    setModal(true)
+    setGastoEditar({})
+     setTimeout(() => {
+      setAnimarModal(true)
+    }, 500)
 
   }
 
   const guardarGasto = (gasto) => {
-    gasto.id = generarId()
+    if (gasto.id) {
+      //Actualizar 
+      const gastoActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
+      setGastoEditar(gastoActualizados)
+    } else {
+      //Nuevo Gasto
+          gasto.id = generarId()
     gasto.fecha=Date.now()
     SetGastos([...gastos, gasto])
+    }
+
     {/*Al añadir el gasto, cierro el MODAL */}
     setAnimarModal(false)
     setTimeout(() => {
       setModal(false)
     },500)
   }
+
+  const eliminarGasto = id => {
+    const gastoActualizados = gasto.filter(gasto => gasto.id !== id)
+    SetGastos(gastoActualizados)
+    SetGastosEditar({})
+  } 
 
   return (
     
@@ -60,6 +86,8 @@ function App() {
           <main>
             <ListadoGasto 
               gastos={gastos}
+              setGastoEditar={setGastoEditar}
+              eliminarGasto={eliminarGasto}
             />
 
             
@@ -79,6 +107,8 @@ function App() {
         animarModal={animarModal}
         setAnimarModal={setAnimarModal}
         guardarGasto={guardarGasto}
+        gastoEditar={gastoEditar}
+        setGastoEditar={setGastoEditar}
       />}
     </div>
   )

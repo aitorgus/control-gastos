@@ -1,4 +1,6 @@
 import React from 'react'
+import { LeadingActions, SwipeableList, SwipeableListItem, SwipeAction, TrailingActions } from 'react-swipeable-list'
+import "react-swipeable-list/dist/styles.css"
 import { formatearFecha } from '../helpers'
 
 import IconoAhorro from '../img/icono_ahorro.svg'
@@ -18,17 +20,34 @@ const diccionarioIconos = {
     salud  : IconoSalud,
     suscripciones : IconoSuscripciones
 }
-const Gasto = ({ gasto }) => {
+const Gasto = ({ gasto , setGastoEditar, eliminarGasto}) => {
     {/*Aplico Destructuring, para evitar en el futuro el tener que ir accediendo a los objetos */}
-    const {categoria, nombre,cantidad,id,fecha} = gasto
-  return (
+    const { categoria, nombre, cantidad, id, fecha } = gasto
+     {/*Permite arrastrar de izq a derecha */}
+    const leadingActions = () => (
+       
+        <LeadingActions >
+            <SwipeAction onClick={() =>setGastoEditar(gasto)}>
+                Editar
+            </SwipeAction>
+        </LeadingActions>  
+    )
+       
+    {/*Permite arrastrar de izq a derecha */ }
+    
+    const trailingActions = () => (
+        <TrailingActions>
+            <SwipeAction onClick={()=> eliminarGasto(id)} destructive={true}>
+            Eliminar
+            </SwipeAction>
+          </TrailingActions>
+      )
+    return (
+        <SwipeableList>
+            <SwipeableListItem leadingActions={leadingActions()} trailingActions={trailingActions()} >
       <div className='gasto sombra'>
           <div className='contenido-gasto'>
               <img src={diccionarioIconos[categoria]} alt="Icono Gastos"
-              
-              
-              
-              
               />
               <div className='descripcion-gasto'>
                   <p className='categoria'>{categoria}</p>
@@ -40,7 +59,9 @@ const Gasto = ({ gasto }) => {
               </div>
           </div>
           <p className='cantidad-gasto'>{cantidad}€</p>
-    </div>
+                </div>.
+                </SwipeableListItem>
+    </SwipeableList>
   )
 }
 
