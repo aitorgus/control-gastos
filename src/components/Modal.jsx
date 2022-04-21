@@ -4,7 +4,7 @@ import CerrarBtn from '../img/cerrar.svg'
 
 
 
-const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto,gastoEditar }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto,gastoEditar,setGastoEditar }) => {
   
   const [mensaje,SetMensaje]=useState('')
   const [nombre, SetNombre] = useState('')
@@ -22,7 +22,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto,gastoEditar 
         setId(gastoEditar.id)
         setFecha(gastoEditar.fecha)
     }
-  },[])
+  }, [])
+  
     {/*Desactivamos el modal asignandole false */}
     const ocultarModal = () => {
       setModal(false)

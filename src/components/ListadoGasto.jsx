@@ -1,45 +1,45 @@
 import React from 'react'
 import Gasto from './Gasto'
 
+const ListadoGastos = ({
+        gastos, 
+        setGastoEditar, 
+        eliminarGasto,
+        filtro, 
+        gastosFiltrados
+    }) => {
+    return (
+        <div className="listado-gastos contenedor">
+            
 
-const ListadoGasto = ({gastos,setGastoEditar,eliminarGasto,filtro,gastosFiltrados}) => {
-  return (
-      <div className='listado-gasto contenedor'> 
-          
-         
-          
-      {/*map va a recorrer el objeto hasta que existan elementos */}
-      {
-        filtro ? ( 
-          <>
-             <h2>{gastos.length ? 'Gastos' : 'No hay gastos en esta categoría'}</h2>
-          { gastosFiltrados.map(gasto => (
-              <Gasto
-              key={gasto.id}
-              gasto={gasto}
-              setGastoEditar={setGastoEditar}
-              eliminarGasto={eliminarGasto}
-              />
-          ))
+            { filtro ? (
+                    <>
+                        <h2>{gastosFiltrados.length ? 'Gastos' : 'No Hay Gastos en esta categoría'}</h2>
+                        {gastosFiltrados.map( gasto => (
+                            <Gasto 
+                                key={gasto.id}
+                                gasto={gasto}
+                                setGastoEditar={setGastoEditar}
+                                eliminarGasto={eliminarGasto}
+                            />
+                        ))}
+                    </>
+                ) : (
+                    <>
+                        <h2>{gastos.length ? 'Gastos' : 'No Hay Gastos aún'}</h2>
+                        {gastos.map( gasto => (
+                            <Gasto 
+                                key={gasto.id}
+                                gasto={gasto}
+                                setGastoEditar={setGastoEditar}
+                                eliminarGasto={eliminarGasto}
+                            />
+                        ))}
+                    </>
+                )
             }
-          </>
-        ) : (
-            <>
-               <h2>{gastos.length ? 'Gastos' : 'No hay gastos aún'}</h2>
-              {gastos.map(gasto => (
-                <Gasto
-                  key={gasto.id}
-                  gasto={gasto}
-                  setGastoEditar={setGastoEditar}
-                  eliminarGasto={eliminarGasto}
-                />
-              ))}
-            </>
-        )
-      }
-        
-    </div>
-  )
+        </div>
+    )
 }
 
-export default ListadoGasto
+export default ListadoGastos

@@ -10,15 +10,18 @@ import IconoNuevoGasto from './img/nuevo-gasto.svg'
 function App() {
 
   const [gastos, setGastos] = useState(
-     localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')): []
-   )
+    localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : [])
+     
   {/*El presupuesto por defecto es 0, hasta que el usuario indique un valor. */ }
   const [presupuesto, setPresupuesto] = useState( Number ( localStorage.getItem('presupuesto') ?? 0 ));
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false)
+
   {/*El valor inicial del Modal será falso, pues no quiero que al inicio se muestre, sólo tras pulsar el Añadir nuevo gasto */}
   const [modal, setModal] = useState(false)
   const [animarModal, setAnimarModal] = useState(false)
+
   const [gastoEditar, setGastoEditar] = useState({})
+
   const [filtro, setFiltro] = useState()
   const [gastosFiltrados, setGastoFiltrados] =useState([])
   
@@ -27,7 +30,7 @@ function App() {
     {
          {/*Activamos el modal si detecta que pulsa el botón de añadir gasto */}
     setModal(true)
-  
+    
     {/*Tras abrir el modal, pasado 0.5 segundo, activamos el formulario  */}
     setTimeout(() => {
       setAnimarModal(true)
@@ -67,6 +70,7 @@ function App() {
   const handleNuevoGasto = () => {
     setModal(true)
     setGastoEditar({})
+
      setTimeout(() => {
       setAnimarModal(true)
     }, 500)
@@ -77,12 +81,12 @@ function App() {
     if (gasto.id) {
       //Actualizar 
       const gastoActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
-      setGastoEditar(gastoActualizados)
+      setGastos(gastoActualizados)
     } else {
       //Nuevo Gasto
           gasto.id = generarId()
-    gasto.fecha=Date.now()
-    setGastos([...gastos, gasto])
+          gasto.fecha=Date.now()
+          setGastos([...gastos, gasto])
     }
 
     {/*Al añadir el gasto, cierro el MODAL */}
@@ -95,7 +99,7 @@ function App() {
   const eliminarGasto = id => {
     const gastoActualizados = gasto.filter(gasto => gasto.id !== id)
     setGastos(gastoActualizados)
-    setGastosEditar({})
+    setGastoEditar({})
   } 
 
   return (
