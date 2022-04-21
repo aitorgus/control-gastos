@@ -8,9 +8,9 @@ import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
 
-   const [gastos,SetGastos] = useState([])
+   const [gastos,setGastos] = useState([])
   {/*El presupuesto por defecto es 0, hasta que el usuario indique un valor. */ }
-  const [presupuesto, setPresupuesto] = useState(0);
+  const [presupuesto, setPresupuesto] = useState( Number ( localStorage.getItem('presupuesto') ?? 0 ));
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false)
   {/*El valor inicial del Modal será falso, pues no quiero que al inicio se muestre, sólo tras pulsar el Añadir nuevo gasto */}
   const [modal, setModal] = useState(false)
@@ -29,6 +29,24 @@ function App() {
     }, 500)
     }
   }, [gastoEditar])
+
+  
+  useEffect(() => {
+    localStorage.setItem('presupuesto',presupuesto ?? 0)
+  }, [presupuesto])
+
+  useEffect(() => {
+
+  }, [gastos])
+
+  {/*Carga sólo cuando se inicia la aplicación, en caso de tener un valor de presupuesto guardado en localStorage, el presupuesto es válido y no carga el panel inicial */}
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0
+    
+    if (presupuestoLS > 0) {
+      setIsValidPresupuesto(true)
+    }
+  }, [])
   
 
   const handleNuevoGasto = () => {
@@ -49,7 +67,7 @@ function App() {
       //Nuevo Gasto
           gasto.id = generarId()
     gasto.fecha=Date.now()
-    SetGastos([...gastos, gasto])
+    setGastos([...gastos, gasto])
     }
 
     {/*Al añadir el gasto, cierro el MODAL */}
@@ -61,8 +79,8 @@ function App() {
 
   const eliminarGasto = id => {
     const gastoActualizados = gasto.filter(gasto => gasto.id !== id)
-    SetGastos(gastoActualizados)
-    SetGastosEditar({})
+    setGastos(gastoActualizados)
+    setGastosEditar({})
   } 
 
   return (

@@ -25,7 +25,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto,gastoEditar 
   },[])
     {/*Desactivamos el modal asignandole false */}
     const ocultarModal = () => {
-      setModal(false)
+      //setModal(false)
       setAnimarModal(false)
       setGastoEditar({})
       setTimeout(() => {
@@ -43,7 +43,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto,gastoEditar 
           },3000 )
           return
      }
-     guardarGasto({nombre,cantidad,categoria, id,fecha,setGastoEditar})
+     guardarGasto({nombre,cantidad,categoria, id,fecha})
   }
   
   return (

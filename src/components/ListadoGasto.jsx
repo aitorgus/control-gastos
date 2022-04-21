@@ -11,7 +11,7 @@ const ListadoGasto = ({gastos,setGastoEditar,eliminarGasto}) => {
           {/*map va a recorrer el objeto hasta que existan elementos */}
           {gastos.map(gasto => (
               <Gasto
-                key={gasto.id}
+              key={gasto.id}
               gasto={gasto}
               setGastoEditar={setGastoEditar}
               eliminarGasto={eliminarGasto}
