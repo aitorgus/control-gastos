@@ -19,13 +19,13 @@ const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto,gastoEditar 
         SetNombre(gastoEditar.nombre)
         SetCantidad(gastoEditar.cantidad)
         SetCategoria(gastoEditar.categoria)
-        SetId(gastoEditar.id)
-        SetFecha(gastoEditar.fecha)
+        setId(gastoEditar.id)
+        setFecha(gastoEditar.fecha)
     }
   },[])
     {/*Desactivamos el modal asignandole false */}
     const ocultarModal = () => {
-      //setModal(false)
+      setModal(false)
       setAnimarModal(false)
       setGastoEditar({})
       setTimeout(() => {

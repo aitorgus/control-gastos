@@ -3,7 +3,7 @@ import NuevoPresupuesto from './NuevoPresupuesto'
 import ControlPresupuesto from './ControlPresupuesto'
 
 //OJO ERRORES -> Debo de hacer Destructuring para utilizar props
-const Header = ({ gastos,
+const Header = ({ gastos,setGastos,
     presupuesto
     , setPresupuesto,
     isValidPresupuesto,
@@ -20,9 +20,11 @@ const Header = ({ gastos,
             {isValidPresupuesto ? (
 
                 <ControlPresupuesto
-                gastos={gastos}
-                presupuesto={presupuesto}
-                
+                    gastos={gastos}
+                    setGastos={setGastos}
+                    presupuesto={presupuesto}
+                    setPresupuesto={setPresupuesto}
+                    setIsValidPresupuesto={setIsValidPresupuesto}
                 />
 
             ) : (
