@@ -1,17 +1,16 @@
 {
   "name": "control-gastos",
   "private": true,
-  "homepage": "https://agcg1991.github.io/control-gastos/",
+  "homepage": "https://agcg1991.github.io/control-gastos",
   "version": "0.0.0",
   "scripts": {
-    "predeploy" :"npm run build" ,
-    "deploy" : "gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d D:\\Documentos\\GitHub\\ReactHooks-Redux\\control-gastos\\dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "gh-pages": "^3.2.3",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.0.4",
@@ -20,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
+    "gh-pages": "^3.2.3",
     "vite": "^2.8.0"
   }
 }
