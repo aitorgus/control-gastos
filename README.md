@@ -16,7 +16,7 @@
 </p>
 
  <p align="center">
-   <img height="300em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioA%C3%B1adirGasto.PNG" />
+   <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioA%C3%B1adirGasto.PNG" />
 </p>
 
 
