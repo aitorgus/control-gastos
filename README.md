@@ -11,7 +11,7 @@
  
  
  ![Imagen Planificador de Gastos](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/PantallaInicialPresupuesto.PNG)
- ![Imagen Añadir Gasto](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioA%C3%B1adirGasto.PNG
+ ![Imagen Añadir Gasto](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioA%C3%B1adirGasto.PNG)
  ![Imagen Gastos Añadidos](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/GestorGastos.PNG)
  ![Imagen Editar Gastos](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/EditarGastos.PNG)
  ![Imagen Editar gastos formularios](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioEditarGasto.PNG)
