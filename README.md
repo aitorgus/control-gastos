@@ -25,7 +25,7 @@
 </p>
   
  <p align="center">
-   <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/EditarGastos.PNG"    
+   <img height="300em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/EditarGastos.PNG"    
 </p>
   
 
