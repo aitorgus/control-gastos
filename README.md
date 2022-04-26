@@ -1,3 +1,5 @@
+[![pages-build-deployment](https://github.com/AGCG1991/control-gastos/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/AGCG1991/control-gastos/actions/workflows/pages/pages-build-deployment)
+
 # Aplicación para planificar el presupuesto personal.
  
  Con esta aplicación, podemos gestionar y clasificar un presupuesto personal con el objetivo de ahorrar. Podemos marcarnos un presupuesto e ir añadiendo gastos. Estos pueden ser clasificados como:
