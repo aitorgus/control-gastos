@@ -9,21 +9,27 @@
  
  Los gastos se añade mediante un formulario. Una vez añadidos podemos visualizarlo en la zona inferior y ser filtrados por conceptos. En la parte superior, podemos ver una gráfica circular, que nos muesra el porcentaje del presupuesto gastado. Los gastos pueden ser editados o eliminados.
  
+ En primer lugar, debemos de fijar un presupuesto inicial.
  
  <p align="center">
     <img height="300em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/PantallaInicialPresupuesto.PNG" />
     
 </p>
 
+Una vez establecido el presupuesto, podemos añadir gastos y clasificarlos desde el formulario habilitado para tal fin.
+
  <p align="center">
    <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioA%C3%B1adirGasto.PNG" />
 
 </p>
 
+Desde el panel inicial, podemos ver los gastos del mes, el nombre descriptivo del mismo, la fecha en la que se publicó y el valor.
 <p align="center">
    <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/GestorGastos.PNG"    
 </p>
-  
+ 
+ Podemos editar los gastos ya añadidos, arrastrando hacia la izquierda la tarjeta. Se nos abrirá de nuevo el formulario, pero esta vez nos permitirá cambiar la descripción, el valor y la clasificación.
+ 
  <p align="center">
    <img height="300em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/EditarGastos.PNG"    
 </p>
