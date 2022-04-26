@@ -17,24 +17,23 @@
 
  <p align="center">
    <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioA%C3%B1adirGasto.PNG" />
+
 </p>
 
-
-   <p align="center">
-   
-    
+<p align="center">
+   <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/GestorGastos.PNG"    
 </p>
   
+ <p align="center">
+   <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/EditarGastos.PNG"    
+</p>
   
- ![Imagen Planificador de Gastos]()
+
+  <p align="center">
+   <img height="400em" src="https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioEditarGasto.PNG"    
+</p>
  
- ![Imagen Añadir Gasto]()
- 
- ![Imagen Gastos Añadidos](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/GestorGastos.PNG)
- 
- ![Imagen Editar Gastos](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/EditarGastos.PNG)
- 
- ![Imagen Editar gastos formularios](https://raw.githubusercontent.com/AGCG1991/AGCG1991.github.io/master/img/FormularioEditarGasto.PNG) 
+
 
 
  
