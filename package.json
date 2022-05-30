@@ -1,11 +1,11 @@
 {
   "name": "control-gastos",
   "private": true,
-  "homepage": "https://agcg1991.github.io/control-gastos",
+  "homepage": "https://github.com/AGCG1991/control-gastos",
   "version": "0.0.0",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d D:\\Documentos\\GitHub\\ReactHooks-Redux\\control-gastos\\dist",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
